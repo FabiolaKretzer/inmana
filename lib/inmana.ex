@@ -1,9 +1,10 @@
 defmodule Inmana do
-  @moduledoc """
-  Inmana keeps the contexts that define your domain
-  and business logic.
+  alias Inmana.Restaurants.Create, as: RestaurantCreate
+  alias Inmana.Supplies.Create, as: SupplyCreate
+  alias Inmana.Supplies.Get, as: SupplyGet
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate create_restaurant(restaurant), to: RestaurantCreate, as: :call
+
+  defdelegate create_supply(supply), to: SupplyCreate, as: :call
+  defdelegate get_supply(id), to: SupplyGet, as: :call
 end
